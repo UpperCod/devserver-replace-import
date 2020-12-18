@@ -3,7 +3,11 @@ import builtins from "builtin-modules";
 import pkg from "./package.json";
 
 export default {
-    input: ["./src/index.js"],
+    input: [
+        "./src/export-map.js",
+        "./src/replace-import.js",
+        "./src/resolve.js",
+    ],
     output: [
         {
             dir: "cjs",

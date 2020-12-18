@@ -1,9 +1,3 @@
-# pkg_name
+# @uppercod/replace-import
 
-bla bla....
-
-## install
-
-```
-npm install pkg_name
-```
+utilities for the replacement of imports in js files
