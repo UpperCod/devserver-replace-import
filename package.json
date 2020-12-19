@@ -1,7 +1,10 @@
 {
     "name": "@uppercod/replace-import",
-    "version": "0.0.0",
+    "type": "module",
+    "version": "0.1.0",
     "description": "utilities for the replacement of imports in js files",
+    "main": "./replace-import.js",
+    "module": "./src/replace-import.js",
     "publishConfig": {
         "access": "public"
     },
@@ -25,25 +28,27 @@
         "es-module-lexer": "^0.3.26"
     },
     "devDependencies": {
-        "@rollup/plugin-node-resolve": "^8.1.0",
         "ava": "^3.10.1",
-        "builtin-modules": "^3.1.0",
-        "esm": "^3.2.25",
         "rollup": "^2.21.0"
     },
     "typings": "types.d.ts",
     "ava": {
-        "require": [
-            "esm"
-        ],
         "files": [
             "tests/**/*.test.js"
         ]
     },
     "exports": {
-        "./*": {
-            "import": "./ems/*.js",
-            "require": "./cjs/*.js"
+        ".": {
+            "import": "./src/replace-import.js",
+            "require": "./replace-import.js"
+        },
+        "./export-map": {
+            "import": "./src/export-map.js",
+            "require": "./export-map.js"
+        },
+        "./resolve": {
+            "import": "./src/resolve.js",
+            "require": "./resolve.js"
         }
     },
     "prettier": {

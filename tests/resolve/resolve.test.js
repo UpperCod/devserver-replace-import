@@ -1,8 +1,8 @@
 import test from "ava";
-import { join, relative } from "path";
-import { resolve, packageName } from "../../src/resolve";
+import { URL } from "url";
+import { resolve, packageName } from "../../src/resolve.js";
 
-const ModuleFolder = join(__dirname, "./test_modules");
+const ModuleFolder = new URL("./test_modules/", import.meta.url);
 
 test("Search expression 1", (t) => {
     const [, folder, subFolder] = "atomico/html".match(packageName);
@@ -25,27 +25,27 @@ test("Search expression 3", (t) => {
 test("resolve 1", async (t) => {
     const m1 = await resolve("pkg-1", ModuleFolder, "pkg.json");
 
-    t.is(relative(__dirname, m1), "test_modules\\pkg-1\\lib\\index.js");
+    t.is(new URL("pkg-1/lib/index.js", ModuleFolder).href, m1.href);
 
     const m2 = await resolve("pkg-1/lib", ModuleFolder, "pkg.json");
 
-    t.is(relative(__dirname, m2), "test_modules\\pkg-1\\lib\\index.js");
+    t.is(new URL("pkg-1/lib/index.js", ModuleFolder).href, m2.href);
 
     const m3 = await resolve("pkg-1/lib/plops", ModuleFolder, "pkg.json");
 
-    t.is(relative(__dirname, m3), "test_modules\\pkg-1\\lib\\plops.js");
+    t.is(new URL("pkg-1/lib/plops.js", ModuleFolder).href, m3.href);
 });
 
 test("resolve 2", async (t) => {
     const m1 = await resolve("pkg-2", ModuleFolder, "pkg.json");
 
-    t.is(relative(__dirname, m1), "test_modules\\pkg-2\\module.js");
+    t.is(new URL("pkg-2/module.js", ModuleFolder).href, m1.href);
 });
 
 test("resolve 3", async (t) => {
     const m1 = await resolve("pkg-3", ModuleFolder, "pkg.json");
 
-    t.is(relative(__dirname, m1), "test_modules\\pkg-3\\lib\\index.js");
+    t.is(new URL("pkg-3/lib/index.js", ModuleFolder).href, m1.href);
 });
 
 test("resolve 3 - catch", async (t) => {

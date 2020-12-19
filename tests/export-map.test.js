@@ -1,5 +1,5 @@
 import test from "ava";
-import { exportMap } from "../src/export-map";
+import { exportMap } from "../src/export-map.js";
 
 test("exportMap 1", (t) => {
     const folders = {

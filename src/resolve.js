@@ -1,7 +1,8 @@
+import { URL } from "url";
 import { join } from "path";
 import { readFile } from "fs/promises";
-import { exportMap } from "./export-map";
-import { cache, addDefaultExtension } from "./utils";
+import { exportMap } from "./export-map.js";
+import { cache, addDefaultExtension } from "./utils.js";
 
 const cwd = process.cwd();
 
@@ -22,12 +23,14 @@ export async function resolve(
 ) {
     const [, folder, subpathname] = npm.match(packageName);
 
-    const id = join(moduleFolder, folder, pkgFileName);
+    const id = new URL(join(folder, pkgFileName), moduleFolder);
 
     const pkg = await cache(id + "#pkg", async () =>
         JSON.parse(await readFile(id, "utf-8"))
     );
+
     let file = "";
+
     if (!subpathname && pkg.module) {
         file = pkg.module;
     } else if (typeof pkg.exports == "object") {
@@ -38,5 +41,8 @@ export async function resolve(
             subpathname ||
             "index";
     }
-    return join(moduleFolder, folder, addDefaultExtension(file, ".js"));
+    return new URL(
+        join(folder, addDefaultExtension(file, ".js")),
+        moduleFolder
+    );
 }

@@ -2,3 +2,9 @@
 /esm
 /cjs
 /package-lock.json
+/export-map.js
+/replace-import.js
+/resolve.js
+/export-map.js.map
+/replace-import.js.map
+/resolve.js.map

@@ -1,5 +1,5 @@
 import test from "ava";
-import { replaceImport } from "../src/replace-import";
+import { replaceImport } from "../src/replace-import.js";
 
 test("resolve-id", async (t) => {
     const code = `
