@@ -1,9 +1,9 @@
 {
     "name": "@uppercod/replace-import",
     "type": "module",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "utilities for the replacement of imports in js files",
-    "main": "./replace-import.js",
+    "main": "./replace-import.cjs",
     "module": "./src/replace-import.js",
     "publishConfig": {
         "access": "public"
@@ -28,6 +28,7 @@
         "es-module-lexer": "^0.3.26"
     },
     "devDependencies": {
+        "@betit/rollup-plugin-rename-extensions": "^0.1.0",
         "ava": "^3.10.1",
         "rollup": "^2.21.0"
     },
@@ -40,15 +41,15 @@
     "exports": {
         ".": {
             "import": "./src/replace-import.js",
-            "require": "./replace-import.js"
+            "require": "./replace-import.cjs"
         },
         "./export-map": {
             "import": "./src/export-map.js",
-            "require": "./export-map.js"
+            "require": "./export-map.cjs"
         },
         "./resolve": {
             "import": "./src/resolve.js",
-            "require": "./resolve.js"
+            "require": "./resolve.cjs"
         }
     },
     "prettier": {

@@ -1,4 +1,5 @@
 import pkg from "./package.json";
+import renameExtensions from "@betit/rollup-plugin-rename-extensions";
 
 export default {
     input: [
@@ -13,5 +14,13 @@ export default {
             format: "cjs",
             sourcemap: true,
         },
+    ],
+    plugins: [
+        renameExtensions({
+            include: ["**/*.js"],
+            mappings: {
+                ".js": ".cjs",
+            },
+        }),
     ],
 };
