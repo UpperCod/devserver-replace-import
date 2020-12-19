@@ -8,13 +8,11 @@ export default {
         "./src/resolve.js",
     ],
     external: Object.keys(pkg.dependencies),
-    output: [
-        {
-            dir: "./",
-            format: "cjs",
-            sourcemap: true,
-        },
-    ],
+    output: {
+        dir: "./",
+        format: "cjs",
+        sourcemap: true,
+    },
     plugins: [
         renameExtensions({
             include: ["**/*.js"],
