@@ -1,10 +1,25 @@
 {
     "name": "@uppercod/replace-import",
     "type": "module",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "utilities for the replacement of imports in js files",
     "main": "./replace-import.cjs",
     "module": "./src/replace-import.js",
+    "typings": "./types.d.ts",
+    "exports": {
+        ".": {
+            "import": "./src/replace-import.js",
+            "require": "./replace-import.cjs"
+        },
+        "./export-map": {
+            "import": "./src/export-map.js",
+            "require": "./export-map.cjs"
+        },
+        "./resolve": {
+            "import": "./src/resolve.js",
+            "require": "./resolve.cjs"
+        }
+    },
     "publishConfig": {
         "access": "public"
     },
@@ -32,25 +47,10 @@
         "ava": "^3.10.1",
         "rollup": "^2.21.0"
     },
-    "typings": "types.d.ts",
     "ava": {
         "files": [
             "tests/**/*.test.js"
         ]
-    },
-    "exports": {
-        ".": {
-            "import": "./src/replace-import.js",
-            "require": "./replace-import.cjs"
-        },
-        "./export-map": {
-            "import": "./src/export-map.js",
-            "require": "./export-map.cjs"
-        },
-        "./resolve": {
-            "import": "./src/resolve.js",
-            "require": "./resolve.cjs"
-        }
     },
     "prettier": {
         "tabWidth": 4,

@@ -14,13 +14,13 @@ export const packageName = /(@[^\/]+\/[^\/]+|[^\/]+)(?:\/){0,1}(.*)/;
 /**
  * Resolve the files of a package
  * @param {string} npm - name of the package to solve
- * @param {string|URL} [moduleFolder] - allows to replace the module resolution path
- * @param {string} [pkgFileName] - allows replacing the name of the package.json, used for test.
+ * @param {Object} options
+ * @param {string|URL} [options.moduleFolder] - allows to replace the module resolution path
+ * @param {string} [options.pkgFileName] - allows replacing the name of the package.json, used for test.
  */
 export async function resolve(
     npm,
-    moduleFolder = defaultModuleFolder,
-    pkgFileName = "package.json"
+    { moduleFolder = defaultModuleFolder, pkgFileName = "package.json" }
 ) {
     const [, folder, subpathname] = npm.match(packageName);
 
