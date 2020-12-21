@@ -1,5 +1,5 @@
 /**
- *
+ * Defines the subpath to use of an export map
  * @param {Exports} exports
  * @param {string} searchFolder
  */
