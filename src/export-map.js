@@ -10,11 +10,7 @@ export function exportMap(exports, searchFolder) {
         if (typeof value == "object") value = value.import || value.default;
         if (folder == ".") return [RegExp("^$"), value];
         return [
-            RegExp(
-                "^" +
-                    folder.slice(2).replace(/\//g, "\\/").replace("*", "(.+)") +
-                    "$"
-            ),
+            RegExp("^" + folder.slice(2).replace("*", "(.+)") + "$"),
             value,
         ];
     });
