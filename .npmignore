@@ -1,3 +1,4 @@
 /node_modules
-/test
+/tests
 /rollup.config.js
+.editorconfig
