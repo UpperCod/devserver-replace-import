@@ -20,7 +20,7 @@ export const packageName = /(@[^\/]+\/[^\/]+|[^\/]+)(?:\/){0,1}(.*)/;
  */
 export async function resolve(
     npm,
-    { moduleFolder = defaultModuleFolder, pkgFileName = "package.json" }
+    { moduleFolder = defaultModuleFolder, pkgFileName = "package.json" } = {}
 ) {
     const [, folder, subpathname] = npm.match(packageName);
 
